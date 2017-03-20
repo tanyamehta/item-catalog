@@ -1,0 +1,76 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+<div class = 'container'>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand" }}'>Edit Menu Items</p>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href='{{url_for('restaurantAll') }}'>Home</a></li>
+      <li><a href='{{url_for('newRestaurant') }}'>Add Restaurant</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href='{{url_for('gdisconnect')}}'><span class="glyphicon glyphicon-log-in "></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+</br>
+
+<form action="{{ url_for('editMenuItem',restaurant_id = restaurant_id, menu_id=item.id)}}" method = 'post'>
+
+<dl>
+	<dt>Name:</dt>
+		<input type ='text' size='30' name='name' placeholder = '{{item.name }}'>
+	<dt>Description:</dt>
+		<textarea name = 'description' rows='5' cols='40' placeholder = '{{item.description }}'></textarea>
+	<dt>Price:</dt>
+		<input type = 'text' size = '8' name='price' placeholder = '{{item.price}}'>
+	<dt>Course:</dt>
+
+	{% if item.course == 'Appetizier' %}
+		<dd><input type ='radio' name='course' value='Appetizer'checked >Appetizer</dd>
+	{%else%}
+	<dd><input type ='radio' name='course' value='Appetizer' >Appetizer</dd>
+    {% endif %}
+
+    {% if item.course == 'Entree' %}
+       <dd><input type ='radio' name='course' value='Entree' checked>Entree</dd>
+
+    {%else%}
+		<dd><input type ='radio' name='course' value='Entree'>Entree</dd>
+    {% endif %}
+
+	{% if item.course == 'Dessert'%}
+		<dd><input type ='radio' name='course' value='Dessert'checked >Dessert</dd>
+
+	{% else %}
+	   <dd><input type ='radio' name='course' value='Dessert'>Dessert</dd>
+
+	{% endif %}
+
+
+	{%if item.course =='Beverage'%}
+		<dd><input type ='radio' name='course' value='Beverage'checked >Beverage</dd>
+	{% else %}
+		<dd><input type ='radio' name='course' value='Beverage'>Beverage</dd>
+	{% endif %}
+
+
+
+
+
+</dl>
+
+
+<input type='submit' value='Edit'>
+
+<a href = '{{url_for('restaurantMenu', restaurant_id = restaurant_id)}}'> Cancel </a>
+</form>
+</body>
+</html>
