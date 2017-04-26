@@ -23,4 +23,4 @@ Once it's complete, type vagrant ssh to login to the VM.
 In the vm, cd /vagrant
 type "pyhon database_setup.py" this will create the database with the categories defined in that script.
 type "python project.py" to start the server.
-Start using the website by typing http://localhost:5000/ in browser
+Start using the website by typing http://localhost:5003/ in browser
